@@ -1,13 +1,19 @@
 # pytrello2
-[![CI Python](https://github.com/vchrombie/pytrello2/actions/workflows/ci-python.yml/badge.svg?branch=master)](https://github.com/vchrombie/pytrello2/actions/workflows/ci-python.yml)
 
-Python wrapper for the Trello API
+<img src="./assets/pytrello2.png" width="160" height="160" align="right">
+
+[![CI Python](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-python.yml/badge.svg?branch=master)](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-python.yml) 
+[![PyPI version](https://badge.fury.io/py/pytrello2.svg)](https://badge.fury.io/py/pytrello2)
+
+> Python wrapper for the Trello API
+
+`pytrello2` is a Python wrapper and ORM that provides an easy way to interact with the Trello API. It handles authentication, mapping Python objects to Trello JSON, and provides a clean interface for all API endpoints.
 
 ## Getting started
 
 1. Clone your new repository to your local machine.
     ```bash
-    git clone https://github.com/vchrombie/pytrello2
+    git clone https://github.com/5-jigglypuff/pytrello2
     ```
 2. Install the required dependencies using Poetry.
     ```bash
