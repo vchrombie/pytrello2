@@ -3,6 +3,7 @@
 <img src="./assets/pytrello2.png" width="160" height="160" align="right">
 
 [![CI Python](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-python.yml/badge.svg?branch=master)](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-python.yml) 
+[![Coverage Status](https://coveralls.io/repos/github/5-jigglypuff/pytrello2/badge.svg?branch=master)](https://coveralls.io/github/5-jigglypuff/pytrello2?branch=master) 
 [![PyPI version](https://badge.fury.io/py/pytrello2.svg)](https://badge.fury.io/py/pytrello2)
 
 > Python wrapper for the Trello API
