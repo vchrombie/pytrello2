@@ -32,3 +32,13 @@ class BoardManager:
         Returns a list of Board objects for all boards.
         """
         return self.get_boards_by_filter(filter="all")
+
+    def create_board(self, name, desc, closed):
+        """
+        Returns a Card object with the given ID.
+        """
+        data = {}
+        data["name"] = name
+        data["desc"] = desc
+        board_data = self.client.post("boards/", data)
+        return Board(board_data)
