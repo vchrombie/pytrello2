@@ -1,0 +1,75 @@
+{
+    "id": "5abbe4b7ddc1b351ef961414",
+    "name": "Trello Platform Changes",
+    "desc": "Track changes to Trello's Platform on this board.",
+    "descData": "<string>",
+    "closed": false,
+    "idMemberCreator": "5abbe4b7ddc1b351ef961414",
+    "idOrganization": "5abbe4b7ddc1b351ef961414",
+    "pinned": false,
+    "url": "https://trello.com/b/dQHqCohZ/trello-platform-changelog",
+    "shortUrl": "https://trello.com/b/dQHqCohZ",
+    "prefs": {
+        "permissionLevel": "org",
+        "hideVotes": true,
+        "voting": "disabled",
+        "comments": "<string>",
+        "selfJoin": true,
+        "cardCovers": true,
+        "isTemplate": true,
+        "cardAging": "pirate",
+        "calendarFeedEnabled": true,
+        "background": "5abbe4b7ddc1b351ef961414",
+        "backgroundImage": "<string>",
+        "backgroundImageScaled": [
+            {
+                "width": 100,
+                "height": 64,
+                "url": "https://trello-backgrounds.s3.amazonaws.com/SharedBackground/100x64/abc/photo-123.jpg"
+            }
+        ],
+        "backgroundTile": true,
+        "backgroundBrightness": "dark",
+        "backgroundBottomColor": "#1e2e00",
+        "backgroundTopColor": "#ffffff",
+        "canBePublic": true,
+        "canBeEnterprise": true,
+        "canBeOrg": true,
+        "canBePrivate": true,
+        "canInvite": true
+    },
+    "labelNames": {
+        "green": "Addition",
+        "yellow": "Update",
+        "orange": "Deprecation",
+        "red": "Deletion",
+        "purple": "Power-Ups",
+        "blue": "News",
+        "sky": "Announcement",
+        "lime": "Delight",
+        "pink": "REST API",
+        "black": "Capabilties"
+    },
+    "limits": {
+        "attachments": {
+            "perBoard": {
+                "status": "ok",
+                "disableAt": 36000,
+                "warnAt": 32400
+            }
+        }
+    },
+    "starred": true,
+    "memberships": "<string>",
+    "shortLink": "<string>",
+    "subscribed": true,
+    "powerUps": "<string>",
+    "dateLastActivity": "<string>",
+    "dateLastView": "<string>",
+    "idTags": "<string>",
+    "datePluginDisable": "<string>",
+    "creationMethod": "<string>",
+    "ixUpdate": 2154,
+    "templateGallery": "<string>",
+    "enterpriseOwned": true
+}
