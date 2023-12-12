@@ -1,5 +1,6 @@
 from .client import HttpClient
 from .board import BoardManager
+from .card import CardManager
 
 
 class TrelloClient:
@@ -18,3 +19,4 @@ class TrelloClient:
         """
         self.http_client = HttpClient(api_key, token)
         self.board = BoardManager(self.http_client)
+        self.card = CardManager(self.http_client)
