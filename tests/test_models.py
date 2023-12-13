@@ -2,9 +2,11 @@ import json
 import os
 
 from pytrello2.models.board import Board
+from pytrello2.models.card import Card
 
 # Constants for mock data file paths
 BOARD_MOCK_DATA = "board.json"
+CARD_MOCK_DATA = "card.json"
 
 
 # Utility function to load mock data from a file
@@ -38,3 +40,25 @@ def test_board_str():
         f" desc={mock_data['desc']}, url={mock_data['url']})"
     )
     assert str(board) == expected_str
+
+
+# Test for card model
+def test_card_model():
+    mock_data = load_mock_data(CARD_MOCK_DATA)
+    card = Card(mock_data)
+
+    assert card.idList == mock_data["idList"]
+    assert card.name == mock_data["name"]
+    assert card.desc == mock_data["desc"]
+
+
+# Test for card str method
+def test_card_str():
+    mock_data = load_mock_data(CARD_MOCK_DATA)
+    card = Card(mock_data)
+
+    expected_str = (
+        f"Card(idList={mock_data['idList']}, name={mock_data['name']},"
+        f" desc={mock_data['desc']},"
+    )
+    assert str(card) == expected_str
