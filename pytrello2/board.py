@@ -33,7 +33,7 @@ class BoardManager:
         """
         return self.get_boards_by_filter(filter="all")
 
-    def create_board(self, name, desc, closed):
+    def create_board(self, name, desc):
         """
         Returns a Card object with the given ID.
         """
