@@ -1,24 +1,14 @@
-import json
-import os
-
 from pytrello2.models.board import Board
 from pytrello2.models.card import Card
 from pytrello2.models.list import List
+
+from .utils import load_mock_data
 
 
 # Constants for mock data file paths
 BOARD_MOCK_DATA = "board.json"
 CARD_MOCK_DATA = "card.json"
 LIST_MOCK_DATA = "list.json"
-
-
-# Utility function to load mock data from a file
-def load_mock_data(file_name):
-    current_dir = os.path.dirname(__file__)
-    data_dir = os.path.join(current_dir, "data")
-    file_path = os.path.join(data_dir, file_name)
-    with open(file_path, "r") as file:
-        return json.load(file)
 
 
 # Test for board model

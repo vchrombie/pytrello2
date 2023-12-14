@@ -1,22 +1,15 @@
-import json
-import os
 import pytest
 
 from unittest.mock import Mock
+
 from pytrello2.models.card import Card
 from pytrello2.card import CardManager
 
+from .utils import load_mock_data
+
+
 # Constants for mock data file paths
 CARD_MOCK_DATA = "card.json"
-
-
-# Utility function to load mock data from a file
-def load_mock_data(file_name):
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    data_dir = os.path.join(current_dir, "data")
-    file_path = os.path.join(data_dir, file_name)
-    with open(file_path, "r") as file:
-        return json.load(file)
 
 
 # Fixture for the mock HTTP client
