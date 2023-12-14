@@ -1,4 +1,4 @@
-class Card:
+class ListClass:
     """
     Represents a Trello List.
     """
@@ -17,6 +17,6 @@ class Card:
         Returns a string representation of a List object.
         """
         return (
-            f"Card(id={self.id}, idBoard={self.idBoard}, name={self.name},"
-            f" id={self.id}, url={self.url})"
+            f"listclass(id={self.id}, idBoard={self.idBoard}," 
+            f"name={self.name},id={self.id}, url={self.url})"
         )
