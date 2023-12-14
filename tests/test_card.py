@@ -32,6 +32,7 @@ def test_get_card(mock_http_client):
     mock_http_client.get.assert_called_once_with("cards/test_card_id")
 
 
+# Test for create_card method
 def test_create_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.post.return_value = card_data
@@ -43,6 +44,7 @@ def test_create_card(mock_http_client):
     assert card.id == card_data["id"]
 
 
+# Test for delete_card method
 def test_delete_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.delete.return_value = card_data
@@ -53,6 +55,7 @@ def test_delete_card(mock_http_client):
     assert isinstance(card, Card)
 
 
+# Test for update_card method
 def test_update_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.put.return_value = card_data

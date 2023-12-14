@@ -31,7 +31,7 @@ def test_get_list(mock_http_client):
     assert list_type.name == list_data["name"]
 
 
-# Test for get all cards method
+# Test for get_cards_on_list method
 def test_get_cards_on_list(mock_http_client):
     list_data = load_mock_data(LIST_MOCK_DATA)
     mock_http_client.get.return_value = list_data
@@ -44,7 +44,7 @@ def test_get_cards_on_list(mock_http_client):
     assert list_type.name == list_data["name"]
 
 
-# Test for create list method
+# Test for create_list method
 def test_create_list(mock_http_client):
     list_data = load_mock_data(LIST_MOCK_DATA)
     mock_http_client.post.return_value = list_data
@@ -57,7 +57,7 @@ def test_create_list(mock_http_client):
     assert list_type.name == list_data["name"]
 
 
-# Test for update list method
+# Test for update_list method
 def test_update_list(mock_http_client):
     list_data = load_mock_data(LIST_MOCK_DATA)
     mock_http_client.put.return_value = list_data
@@ -69,7 +69,7 @@ def test_update_list(mock_http_client):
     assert list_type.id == list_data["id"]
 
 
-# Test for archive list method
+# Test for archive_list method
 def test_archive_list(mock_http_client):
     list_data = load_mock_data(LIST_MOCK_DATA)
     mock_http_client.post.return_value = list_data
