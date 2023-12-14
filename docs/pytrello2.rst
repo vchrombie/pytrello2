@@ -1,0 +1,53 @@
+pytrello2 package
+=================
+
+Subpackages
+-----------
+
+.. toctree::
+   :maxdepth: 4
+
+   pytrello2.models
+
+Submodules
+----------
+
+pytrello2.board module
+----------------------
+
+.. automodule:: pytrello2.board
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pytrello2.client module
+-----------------------
+
+.. automodule:: pytrello2.client
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pytrello2.exceptions module
+---------------------------
+
+.. automodule:: pytrello2.exceptions
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+pytrello2.utils module
+----------------------
+
+.. automodule:: pytrello2.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+Module contents
+---------------
+
+.. automodule:: pytrello2
+   :members:
+   :undoc-members:
+   :show-inheritance:

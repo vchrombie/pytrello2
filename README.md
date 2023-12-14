@@ -21,11 +21,13 @@ interface for all API endpoints.
 ## Installation
 
 You can install `pytrello2` using pip:
+
 ```bash
 pip install pytrello2
 ```
 
 You can also install `pytrello2` using Poetry:
+
 ```bash
 cd pytrello2/
 poetry install
@@ -34,7 +36,7 @@ poetry shell
 
 ## Authentication
 
-A Trello API key and token is needed to use pytrello2.  To set up
+A Trello API key and token is needed to use pytrello2. To set up
 authentication, follow these steps:
 
 1. Obtain your Trello API key by logging into Trello, and then visiting
@@ -59,7 +61,7 @@ boards = client.board.get_all_boards()
 for board in boards:
     print(f"Board Name: {board.name}, Board ID: {board.id}")
 ```
-    
+
 ## Contributing
 
 Contributions are welcome!
