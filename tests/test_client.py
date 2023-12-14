@@ -2,6 +2,7 @@ import pytest
 import requests
 
 from unittest.mock import patch, Mock
+
 from pytrello2.client import HttpClient
 from pytrello2.exceptions import TrelloAPIException
 

@@ -1,22 +1,15 @@
-import json
-import os
 import pytest
 
 from unittest.mock import Mock
+
 from pytrello2.models.card import Card
 from pytrello2.card import CardManager
 
+from .utils import load_mock_data
+
+
 # Constants for mock data file paths
 CARD_MOCK_DATA = "card.json"
-
-
-# Utility function to load mock data from a file
-def load_mock_data(file_name):
-    current_dir = os.path.dirname(os.path.realpath(__file__))
-    data_dir = os.path.join(current_dir, "data")
-    file_path = os.path.join(data_dir, file_name)
-    with open(file_path, "r") as file:
-        return json.load(file)
 
 
 # Fixture for the mock HTTP client
@@ -39,6 +32,7 @@ def test_get_card(mock_http_client):
     mock_http_client.get.assert_called_once_with("cards/test_card_id")
 
 
+# Test for create_card method
 def test_create_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.post.return_value = card_data
@@ -50,6 +44,7 @@ def test_create_card(mock_http_client):
     assert card.id == card_data["id"]
 
 
+# Test for delete_card method
 def test_delete_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.delete.return_value = card_data
@@ -60,6 +55,7 @@ def test_delete_card(mock_http_client):
     assert isinstance(card, Card)
 
 
+# Test for update_card method
 def test_update_card(mock_http_client):
     card_data = load_mock_data(CARD_MOCK_DATA)
     mock_http_client.put.return_value = card_data
