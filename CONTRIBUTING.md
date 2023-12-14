@@ -1,10 +1,15 @@
 # Contributing Guidelines
 
-Thank you for your interest in contributing to pytrello2 / todo-trello! We welcome bug reports, feature requests, pull requests, and other contributions from the community.
+Thank you for your interest in contributing to pytrello2!
+
+We welcome bug reports, feature requests, pull requests, and other contributions
+from the community.
 
 ## Reporting Bugs and Requesting Features
 
-Before reporting a bug or requesting a new feature, please search existing [issues](https://github.com/vchrombie/pytrello2/issues) to see if someone has already reported the problem or suggested the idea.
+Before reporting a bug or requesting a new feature, please search existing
+[issues](https://github.com/5-jigglypuff/pytrello2/issues) to see if someone has
+already reported the problem or suggested the idea.
 
 ## Pull Requests
 
@@ -27,6 +32,7 @@ In your pull request description:
 
 ## Code of Conduct
 
-All contributors are expected to adhere to our code of conduct. Report any unacceptable behavior to the maintainers.
+All contributors are expected to adhere to our code of conduct. Report any
+unacceptable behavior to the maintainers.
 
 Thanks again for your contributions!
