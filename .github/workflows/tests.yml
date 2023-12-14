@@ -1,7 +1,4 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: ci python
+name: ci-tests
 
 on:
   push:
@@ -11,32 +8,38 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
+
     - uses: actions/checkout@v3
+
     - name: Set up Python 3.9
       uses: actions/setup-python@v3
       with:
         python-version: "3.9"
+
     - name: Install and set up Poetry
       run: |
         curl -sSL https://install.python-poetry.org | python3 -
         echo "PATH=$HOME/.poetry/bin:$PATH" >> $GITHUB_ENV
+
     - name: Install dependencies
       run: |
         poetry install -vvv
+
     - name: Lint with flake8
       run: |
         poetry run flake8
+
     - name: Formatting with black
       run: |
         poetry run black --check .
+
     - name: Test with pytest with coverage
       run: |
         poetry run coverage run --source=pytrello2 -m pytest
         poetry run coverage report -m
+
     - name: Upload coverage to Coveralls
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
