@@ -57,3 +57,15 @@ def test_get_all_boards(mock_http_client):
     mock_http_client.get.assert_called_once_with(
         "members/me/boards", params={"filter": "all"}
     )
+
+
+# Test for create_board method
+def test_create_board(mock_http_client):
+    board_data = load_mock_data(BOARD_MOCK_DATA)
+    mock_http_client.post.return_value = board_data
+
+    board_manager = BoardManager(mock_http_client)
+    board = board_manager.create_board("test_board", "test_todo")
+
+    assert isinstance(board, Board)
+    assert board.id == board_data["id"]
