@@ -62,3 +62,15 @@ def test_create_board(mock_http_client):
 
     assert isinstance(board, Board)
     assert board.id == board_data["id"]
+
+
+# Test for delete_board method
+def test_delete_board(mock_http_client):
+    mock_http_client.delete.return_value.status_code = 200
+    mock_http_client.delete.return_value.text = '{"_value":null}'
+
+    board_manager = BoardManager(mock_http_client)
+    response = board_manager.delete_board("test_board_id")
+
+    assert response.status_code == 200
+    assert response.text == '{"_value":null}'
