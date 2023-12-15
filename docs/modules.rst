@@ -1,8 +1,0 @@
-pytrello2
-=========
-
-.. toctree::
-   :maxdepth: 4
-
-   pytrello2
-   tests

@@ -1,6 +1,8 @@
 # pytrello2
 
-<img src="./assets/pytrello2.png" width="160" height="160" align="right">
+<img
+src="https://raw.githubusercontent.com/pytrello2/pytrello2/master/assets/pytrello2.png"
+width="222" height="222" align="right">
 
 [![CI
 Python](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-tests.yml/badge.svg?branch=master)](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-tests.yml)
@@ -36,8 +38,8 @@ poetry shell
 
 ## Authentication
 
-A Trello API key and token is needed to use pytrello2. To set up
-authentication, follow these steps:
+A Trello API key and token is needed to use pytrello2. To set up authentication,
+follow these steps:
 
 1. Obtain your Trello API key by logging into Trello, and then visiting
    https://trello.com/1/appKey/generate.
@@ -66,9 +68,12 @@ for board in boards:
 
 Contributions are welcome!
 
-Check out the [Contributing Guidelines](./CONTRIBUTING.md) for more details.
+Check out the [Contributing
+Guidelines](https://github.com/pytrello2/pytrello2/blob/master/CONTRIBUTING.md)
+for more details.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE)
-file for details.
+This project is licensed under the MIT License - see the
+[LICENSE](https://github.com/pytrello2/pytrello2/blob/master/LICENSE) file for
+details.
