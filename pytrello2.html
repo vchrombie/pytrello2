@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>pytrello2 package &mdash; pytrello2 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+
+  
+    <link rel="shortcut icon" href="_static/pytrello2.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=01f34227"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pytrello2.models package" href="pytrello2.models.html" />
+    <link rel="prev" title="pytrello2" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: #011d41" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            pytrello2
+              <img src="_static/pytrello2.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">pytrello2 package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#subpackages">Subpackages</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pytrello2.models.html">pytrello2.models package</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.board">pytrello2.board module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.board.BoardManager"><code class="docutils literal notranslate"><span class="pre">BoardManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.card">pytrello2.card module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.card.CardManager"><code class="docutils literal notranslate"><span class="pre">CardManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.client">pytrello2.client module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.client.HttpClient"><code class="docutils literal notranslate"><span class="pre">HttpClient</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.exceptions">pytrello2.exceptions module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.exceptions.TrelloAPIException"><code class="docutils literal notranslate"><span class="pre">TrelloAPIException</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.list">pytrello2.list module</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.list.ListManager"><code class="docutils literal notranslate"><span class="pre">ListManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2.utils">pytrello2.utils module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-pytrello2">Module contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pytrello2.TrelloClient"><code class="docutils literal notranslate"><span class="pre">TrelloClient</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="genindex.html">Index</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/pytrello2/pytrello2">pytrello2/pytrello2</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: #011d41" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">pytrello2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">pytrello2</a></li>
+      <li class="breadcrumb-item active">pytrello2 package</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/pytrello2/pytrello2/blob/master/docs/source/pytrello2.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="pytrello2-package">
+<h1>pytrello2 package<a class="headerlink" href="#pytrello2-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pytrello2.models.html">pytrello2.models package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models.board">pytrello2.models.board module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.board.Board"><code class="docutils literal notranslate"><span class="pre">Board</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models.card">pytrello2.models.card module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.card.Card"><code class="docutils literal notranslate"><span class="pre">Card</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models.list">pytrello2.models.list module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.list.List"><code class="docutils literal notranslate"><span class="pre">List</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pytrello2.board">
+<span id="pytrello2-board-module"></span><h2>pytrello2.board module<a class="headerlink" href="#module-pytrello2.board" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.board.</span></span><span class="sig-name descname"><span class="pre">BoardManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages operations related to Trello boards.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager.create_board">
+<span class="sig-name descname"><span class="pre">create_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.create_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.create_board" title="Link to this definition"></a></dt>
+<dd><p>Returns a Card object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_all_boards">
+<span class="sig-name descname"><span class="pre">get_all_boards</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_all_boards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_all_boards" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of Board objects for all boards.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_board">
+<span class="sig-name descname"><span class="pre">get_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_board" title="Link to this definition"></a></dt>
+<dd><p>Returns a Board object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_boards_by_filter">
+<span class="sig-name descname"><span class="pre">get_boards_by_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_boards_by_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_boards_by_filter" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of Board objects that match the given filter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.card">
+<span id="pytrello2-card-module"></span><h2>pytrello2.card module<a class="headerlink" href="#module-pytrello2.card" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.card.CardManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.card.</span></span><span class="sig-name descname"><span class="pre">CardManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages operations related to Trello cards.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.card.CardManager.create_card">
+<span class="sig-name descname"><span class="pre">create_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.create_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.create_card" title="Link to this definition"></a></dt>
+<dd><p>Returns a Card object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.card.CardManager.delete_card">
+<span class="sig-name descname"><span class="pre">delete_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.delete_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.delete_card" title="Link to this definition"></a></dt>
+<dd><p>Returns a Card object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.card.CardManager.get_card">
+<span class="sig-name descname"><span class="pre">get_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.get_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.get_card" title="Link to this definition"></a></dt>
+<dd><p>Returns a Card object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.card.CardManager.update_card">
+<span class="sig-name descname"><span class="pre">update_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.update_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.update_card" title="Link to this definition"></a></dt>
+<dd><p>Returns a Card object with the given ID.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.client">
+<span id="pytrello2-client-module"></span><h2>pytrello2.client module<a class="headerlink" href="#module-pytrello2.client" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.client.</span></span><span class="sig-name descname"><span class="pre">HttpClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/client.html#HttpClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.client.HttpClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Handles HTTP requests to the Trello API.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient.BASE_URL">
+<span class="sig-name descname"><span class="pre">BASE_URL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'https://api.trello.com/1/'</span></em><a class="headerlink" href="#pytrello2.client.HttpClient.BASE_URL" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient.delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/client.html#HttpClient.delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.client.HttpClient.delete" title="Link to this definition"></a></dt>
+<dd><p>Sends a DELETE request to the Trello API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/client.html#HttpClient.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.client.HttpClient.get" title="Link to this definition"></a></dt>
+<dd><p>Sends a GET request to the Trello API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient.post">
+<span class="sig-name descname"><span class="pre">post</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/client.html#HttpClient.post"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.client.HttpClient.post" title="Link to this definition"></a></dt>
+<dd><p>Sends a POST request to the Trello API.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.client.HttpClient.put">
+<span class="sig-name descname"><span class="pre">put</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">endpoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/client.html#HttpClient.put"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.client.HttpClient.put" title="Link to this definition"></a></dt>
+<dd><p>Sends a PUT request to the Trello API.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.exceptions">
+<span id="pytrello2-exceptions-module"></span><h2>pytrello2.exceptions module<a class="headerlink" href="#module-pytrello2.exceptions" title="Link to this heading"></a></h2>
+<dl class="py exception">
+<dt class="sig sig-object py" id="pytrello2.exceptions.TrelloAPIException">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.exceptions.</span></span><span class="sig-name descname"><span class="pre">TrelloAPIException</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/exceptions.html#TrelloAPIException"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.exceptions.TrelloAPIException" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Base exception class for Trello API errors.</p>
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.list">
+<span id="pytrello2-list-module"></span><h2>pytrello2.list module<a class="headerlink" href="#module-pytrello2.list" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.list.</span></span><span class="sig-name descname"><span class="pre">ListManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Manages operations related to Trello Lists.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager.archive_list">
+<span class="sig-name descname"><span class="pre">archive_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.archive_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.archive_list" title="Link to this definition"></a></dt>
+<dd><p>Returns a List object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager.create_list">
+<span class="sig-name descname"><span class="pre">create_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idBoard</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.create_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.create_list" title="Link to this definition"></a></dt>
+<dd><p>Returns a List object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager.get_cards_on_list">
+<span class="sig-name descname"><span class="pre">get_cards_on_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.get_cards_on_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.get_cards_on_list" title="Link to this definition"></a></dt>
+<dd><p>Returns a List object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager.get_list">
+<span class="sig-name descname"><span class="pre">get_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.get_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.get_list" title="Link to this definition"></a></dt>
+<dd><p>Returns a List object with the given ID.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.list.ListManager.update_list">
+<span class="sig-name descname"><span class="pre">update_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idBoard</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.update_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.update_list" title="Link to this definition"></a></dt>
+<dd><p>Returns a List object with the given ID.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.utils">
+<span id="pytrello2-utils-module"></span><h2>pytrello2.utils module<a class="headerlink" href="#module-pytrello2.utils" title="Link to this heading"></a></h2>
+</section>
+<section id="module-pytrello2">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pytrello2" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.TrelloClient">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.</span></span><span class="sig-name descname"><span class="pre">TrelloClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">api_key</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2.html#TrelloClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.TrelloClient" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Trello client class.</p>
+<p>Main client class for interacting with the Trello API. Provides high-level
+access to Trello functionality through various manager classes.</p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="pytrello2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pytrello2.models.html" class="btn btn-neutral float-right" title="pytrello2.models package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, pytrello2 maintainers.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
