@@ -5,7 +5,7 @@ src="https://raw.githubusercontent.com/pytrello2/pytrello2/master/assets/pytrell
 width="222" height="222" align="right">
 
 [![CI
-Python](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-tests.yml/badge.svg?branch=master)](https://github.com/5-jigglypuff/pytrello2/actions/workflows/ci-tests.yml)
+Python](https://github.com/5-jigglypuff/pytrello2/actions/workflows/tests.yml/badge.svg?branch=master)](https://github.com/5-jigglypuff/pytrello2/actions/workflows/tests.yml)
 [![Coverage
 Status](https://coveralls.io/repos/github/5-jigglypuff/pytrello2/badge.svg?branch=master)](https://coveralls.io/github/5-jigglypuff/pytrello2?branch=master)
 [![PyPI
