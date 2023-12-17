@@ -35,10 +35,16 @@ class BoardManager:
 
     def create_board(self, name, desc):
         """
-        Returns a Card object with the given ID.
+        Creates a new Board object.
         """
         data = {}
         data["name"] = name
         data["desc"] = desc
         board_data = self.client.post("boards/", data)
         return Board(board_data)
+
+    def delete_board(self, board_id):
+        """
+        Deletes a Board object with the given ID.
+        """
+        return self.client.delete(f"boards/{board_id}")
