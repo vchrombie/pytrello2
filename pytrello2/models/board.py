@@ -1,4 +1,7 @@
-class Board:
+from .model import Model
+
+
+class Board(Model):
     """
     Represents a Trello board.
     """

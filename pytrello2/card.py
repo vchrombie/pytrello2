@@ -1,4 +1,4 @@
-from .models.card import Card
+from .models import Card
 
 
 class CardManager:

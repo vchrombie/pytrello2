@@ -1,6 +1,5 @@
-from pytrello2.models.board import Board
-from pytrello2.models.card import Card
-from pytrello2.models.list import List
+from pytrello2.models import Board, Card, List
+from pytrello2.models.model import Model
 
 from .utils import load_mock_data
 
@@ -9,6 +8,14 @@ from .utils import load_mock_data
 BOARD_MOCK_DATA = "board.json"
 CARD_MOCK_DATA = "card.json"
 LIST_MOCK_DATA = "list.json"
+
+
+# Test for model
+def test_model():
+    model = Model("test_id")
+
+    assert model.id == "test_id"
+    assert model.to_json() == '{\n    "id": "test_id"\n}'
 
 
 # Test for board model

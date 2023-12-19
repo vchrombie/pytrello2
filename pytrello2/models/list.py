@@ -1,4 +1,7 @@
-class List:
+from .model import Model
+
+
+class List(Model):
     """
     Represents a Trello List.
     """

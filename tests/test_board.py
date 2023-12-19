@@ -2,7 +2,7 @@ import pytest
 
 from unittest.mock import Mock
 
-from pytrello2.models.board import Board
+from pytrello2.models import Board
 from pytrello2.board import BoardManager
 
 from .utils import load_mock_data

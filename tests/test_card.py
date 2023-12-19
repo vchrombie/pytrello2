@@ -2,7 +2,7 @@ import pytest
 
 from unittest.mock import Mock
 
-from pytrello2.models.card import Card
+from pytrello2.models import Card
 from pytrello2.card import CardManager
 
 from .utils import load_mock_data
