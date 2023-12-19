@@ -66,7 +66,6 @@ def test_list_model():
     assert list.id == mock_data["id"]
     assert list.name == mock_data["name"]
     assert list.idBoard == mock_data["idBoard"]
-    assert list.url == mock_data["url"]
 
 
 # Test for list str method
@@ -75,8 +74,8 @@ def test_list_str():
     list_data = List(mock_data)
 
     expected_str = (
-        f"List(id={mock_data['id']}, idBoard={mock_data['idBoard']},"
-        f" name={mock_data['name']}, url={mock_data['url']})"
+        f"List(id={mock_data['id']}, name={mock_data['name']},"
+        f" idBoard={mock_data['idBoard']})"
     )
     print(expected_str)
     assert str(list_data) == expected_str
