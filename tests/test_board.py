@@ -30,10 +30,36 @@ def test_get_board(mock_http_client):
     assert isinstance(board, Board)
     assert board.id == board_data["id"]
     assert board.name == board_data["name"]
-    mock_http_client.get.assert_called_once_with("boards/test_board_id")
+    mock_http_client.get.assert_called_once_with("boards/test_board_id/")
 
 
-# Test for get_all_boards method
+# Test for create_board method
+def test_create_board(mock_http_client):
+    board_data = load_mock_data(BOARD_MOCK_DATA)
+    mock_http_client.post.return_value = board_data
+
+    board_manager = BoardManager(mock_http_client)
+    board = board_manager.create_board("test_board")
+
+    assert isinstance(board, Board)
+    assert board.id == board_data["id"]
+    assert board.name == board_data["name"]
+    mock_http_client.post.assert_called_once_with("boards/", {"name": "test_board"})
+
+
+# Test for delete_board method
+def test_delete_board(mock_http_client):
+    mock_http_client.delete.return_value.status_code = 200
+    mock_http_client.delete.return_value.text = '{"_value":null}'
+
+    board_manager = BoardManager(mock_http_client)
+    response = board_manager.delete_board("test_board_id")
+
+    assert response.status_code == 200
+    mock_http_client.delete.assert_called_once_with("boards/test_board_id/")
+
+
+# Test for get_all_boards and get_boards_by_filter methods
 def test_get_all_boards(mock_http_client):
     boards_data = load_mock_data(BOARDS_MOCK_DATA)
     mock_http_client.get.return_value = boards_data
@@ -48,29 +74,5 @@ def test_get_all_boards(mock_http_client):
         assert board.id == mock_data["id"]
         assert board.name == mock_data["name"]
     mock_http_client.get.assert_called_once_with(
-        "members/me/boards", params={"filter": "all"}
+        "members/me/boards/", params={"filter": "all"}
     )
-
-
-# Test for create_board method
-def test_create_board(mock_http_client):
-    board_data = load_mock_data(BOARD_MOCK_DATA)
-    mock_http_client.post.return_value = board_data
-
-    board_manager = BoardManager(mock_http_client)
-    board = board_manager.create_board("test_board", "test_todo")
-
-    assert isinstance(board, Board)
-    assert board.id == board_data["id"]
-
-
-# Test for delete_board method
-def test_delete_board(mock_http_client):
-    mock_http_client.delete.return_value.status_code = 200
-    mock_http_client.delete.return_value.text = '{"_value":null}'
-
-    board_manager = BoardManager(mock_http_client)
-    response = board_manager.delete_board("test_board_id")
-
-    assert response.status_code == 200
-    assert response.text == '{"_value":null}'

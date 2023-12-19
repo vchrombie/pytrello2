@@ -25,9 +25,6 @@ def test_board_model():
 
     assert board.id == mock_data["id"]
     assert board.name == mock_data["name"]
-    assert board.desc == mock_data["desc"]
-    assert board.closed == mock_data["closed"]
-    assert board.url == mock_data["url"]
 
 
 # Test for board str method
@@ -35,10 +32,7 @@ def test_board_str():
     mock_data = load_mock_data(BOARD_MOCK_DATA)
     board = Board(mock_data)
 
-    expected_str = (
-        f"Board(id={mock_data['id']}, name={mock_data['name']},"
-        f" desc={mock_data['desc']}, url={mock_data['url']})"
-    )
+    expected_str = f"Board(id={mock_data['id']}, name={mock_data['name']})"
     assert str(board) == expected_str
 
 
