@@ -1,8 +1,14 @@
 {
   "id": "5abbe4b7ddc1b351ef961414",
-  "name": "doing",
-  "closed": false,
-  "color": null,
-  "idBoard": "5abbe4b7ddc1b351ef961414",
-  "pos": 8192
+  "name": "Things to buy today",
+  "closed": true,
+  "pos": 2154,
+  "softLimit": "<string>",
+  "idBoard": "<string>",
+  "subscribed": true,
+  "limits": {
+    "attachments": {
+      "perBoard": {}
+    }
+  }
 }

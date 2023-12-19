@@ -1,4 +1,4 @@
-from .models import Board
+from .models import Board, List
 
 
 class BoardManager:
@@ -58,3 +58,13 @@ class BoardManager:
         Returns a list of all boards.
         """
         return self.get_boards_by_filter(filter="all")
+
+    def get_lists_on_board(self, board_id):
+        """
+        Returns a list of lists on the given board.
+
+        Parameters:
+            - board_id (str): The unique identifier of the board.
+        """
+        lists = self.client.get(f"boards/{board_id}/lists/")
+        return [List(list) for list in lists]
