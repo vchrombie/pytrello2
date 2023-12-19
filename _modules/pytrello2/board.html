@@ -129,13 +129,22 @@
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.create_board">[docs]</a>
     <span class="k">def</span> <span class="nf">create_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Card object with the given ID.</span>
+<span class="sd">        Creates a new Board object.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
         <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
         <span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc</span>
         <span class="n">board_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;boards/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">Board</span><span class="p">(</span><span class="n">board_data</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BoardManager.delete_board">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.delete_board">[docs]</a>
+    <span class="k">def</span> <span class="nf">delete_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Deletes a Board object with the given ID.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
