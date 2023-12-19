@@ -41,9 +41,8 @@ def test_card_model():
     mock_data = load_mock_data(CARD_MOCK_DATA)
     card = Card(mock_data)
 
+    assert card.id == mock_data["id"]
     assert card.idList == mock_data["idList"]
-    assert card.name == mock_data["name"]
-    assert card.desc == mock_data["desc"]
 
 
 # Test for card str method
@@ -51,10 +50,7 @@ def test_card_str():
     mock_data = load_mock_data(CARD_MOCK_DATA)
     card = Card(mock_data)
 
-    expected_str = (
-        f"Card(idList={mock_data['idList']}, name={mock_data['name']},"
-        f" desc={mock_data['desc']},"
-    )
+    expected_str = f"Card(id={mock_data['id']}, idList={mock_data['idList']})"
     assert str(card) == expected_str
 
 
