@@ -25,7 +25,6 @@ class HttpClient:
         if params is None:
             params = {}
         params.update({"key": self.api_key, "token": self.token})
-        print(params)
 
         try:
             response = requests.request(

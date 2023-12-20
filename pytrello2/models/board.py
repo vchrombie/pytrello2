@@ -1,4 +1,7 @@
-class Board:
+from .model import Model
+
+
+class Board(Model):
     """
     Represents a Trello board.
     """
@@ -7,16 +10,11 @@ class Board:
         """
         Initializes a new Board object.
         """
-        self.id = data.get("id")
-        self.name = data.get("name")
-        self.desc = data.get("desc")
-        self.closed = data.get("closed")
-        self.url = data.get("url")
+        super().__init__(data.get("id"))
+        self.__dict__.update(data)
 
     def __str__(self):
         """
         Returns a string representation of a Board object.
         """
-        return (
-            f"Board(id={self.id}, name={self.name}, desc={self.desc}, url={self.url})"
-        )
+        return f"Board(id={self.id}, name={self.name})"

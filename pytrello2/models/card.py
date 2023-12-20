@@ -1,4 +1,7 @@
-class Card:
+from .model import Model
+
+
+class Card(Model):
     """
     Represents a Trello board.
     """
@@ -8,16 +11,10 @@ class Card:
         Initializes a new Card object.
         """
         self.id = data.get("id")
-        self.idList = data.get("idList")
-        self.idBoard = data.get("board_id")
-        self.name = data.get("name")
-        self.desc = data.get("desc")
-        self.due = data.get("due")
-        self.start = data.get("start")
-        self.url = data.get("url")
+        self.__dict__.update(data)
 
     def __str__(self):
         """
         Returns a string representation of a Card object.
         """
-        return f"Card(idList={self.idList}, name={self.name}, desc={self.desc},"
+        return f"Card(id={self.id}, idList={self.idList})"

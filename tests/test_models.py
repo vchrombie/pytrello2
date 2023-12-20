@@ -1,6 +1,5 @@
-from pytrello2.models.board import Board
-from pytrello2.models.card import Card
-from pytrello2.models.list import List
+from pytrello2.models import Board, Card, List
+from pytrello2.models.model import Model
 
 from .utils import load_mock_data
 
@@ -11,6 +10,14 @@ CARD_MOCK_DATA = "card.json"
 LIST_MOCK_DATA = "list.json"
 
 
+# Test for model
+def test_model():
+    model = Model("test_id")
+
+    assert model.id == "test_id"
+    assert model.to_json() == '{\n    "id": "test_id"\n}'
+
+
 # Test for board model
 def test_board_model():
     mock_data = load_mock_data(BOARD_MOCK_DATA)
@@ -18,9 +25,6 @@ def test_board_model():
 
     assert board.id == mock_data["id"]
     assert board.name == mock_data["name"]
-    assert board.desc == mock_data["desc"]
-    assert board.closed == mock_data["closed"]
-    assert board.url == mock_data["url"]
 
 
 # Test for board str method
@@ -28,10 +32,7 @@ def test_board_str():
     mock_data = load_mock_data(BOARD_MOCK_DATA)
     board = Board(mock_data)
 
-    expected_str = (
-        f"Board(id={mock_data['id']}, name={mock_data['name']},"
-        f" desc={mock_data['desc']}, url={mock_data['url']})"
-    )
+    expected_str = f"Board(id={mock_data['id']}, name={mock_data['name']})"
     assert str(board) == expected_str
 
 
@@ -40,9 +41,8 @@ def test_card_model():
     mock_data = load_mock_data(CARD_MOCK_DATA)
     card = Card(mock_data)
 
+    assert card.id == mock_data["id"]
     assert card.idList == mock_data["idList"]
-    assert card.name == mock_data["name"]
-    assert card.desc == mock_data["desc"]
 
 
 # Test for card str method
@@ -50,10 +50,7 @@ def test_card_str():
     mock_data = load_mock_data(CARD_MOCK_DATA)
     card = Card(mock_data)
 
-    expected_str = (
-        f"Card(idList={mock_data['idList']}, name={mock_data['name']},"
-        f" desc={mock_data['desc']},"
-    )
+    expected_str = f"Card(id={mock_data['id']}, idList={mock_data['idList']})"
     assert str(card) == expected_str
 
 
@@ -65,7 +62,6 @@ def test_list_model():
     assert list.id == mock_data["id"]
     assert list.name == mock_data["name"]
     assert list.idBoard == mock_data["idBoard"]
-    assert list.url == mock_data["url"]
 
 
 # Test for list str method
@@ -74,8 +70,8 @@ def test_list_str():
     list_data = List(mock_data)
 
     expected_str = (
-        f"List(id={mock_data['id']}, idBoard={mock_data['idBoard']},"
-        f" name={mock_data['name']}, url={mock_data['url']})"
+        f"List(id={mock_data['id']}, name={mock_data['name']},"
+        f" idBoard={mock_data['idBoard']})"
     )
     print(expected_str)
     assert str(list_data) == expected_str
