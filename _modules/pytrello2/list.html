@@ -79,7 +79,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pytrello2.list</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.models.list</span> <span class="kn">import</span> <span class="n">List</span>
+<span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">List</span><span class="p">,</span> <span class="n">Card</span>
 
 
 <div class="viewcode-block" id="ListManager">
@@ -91,7 +91,8 @@
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the ListManager with a client to handle requests to the Trello API.</span>
+<span class="sd">        Initializes the ListManager with a client to handle requests to the</span>
+<span class="sd">        Trello API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -99,45 +100,45 @@
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.get_list">[docs]</a>
     <span class="k">def</span> <span class="nf">get_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a List object with the given ID.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span></div>
+<span class="sd">        Retrieves a specific list by its ID.</span>
 
-
-<div class="viewcode-block" id="ListManager.get_cards_on_list">
-<a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.get_cards_on_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_cards_on_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a List object with the given ID.</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            - list_id (str): The unique identifier of the list.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/cards/&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span></div>
+        <span class="nb">list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ListManager.create_list">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.create_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idBoard</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">board_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a List object with the given ID.</span>
+<span class="sd">        Creates a new list on a specified board.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - name (str): The name of the new list.</span>
+<span class="sd">            - board_id (str): The unique identifier of the board where the list</span>
+<span class="sd">              will be created.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;idBoard&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idBoard</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;lists/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span></div>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span> <span class="s2">&quot;idBoard&quot;</span><span class="p">:</span> <span class="n">board_id</span><span class="p">}</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="nb">list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;lists/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="ListManager.update_list">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.update_list">[docs]</a>
-    <span class="k">def</span> <span class="nf">update_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">,</span> <span class="n">idBoard</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">update_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a List object with the given ID.</span>
+<span class="sd">        Updates a list with the given ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - list_id (str): The unique identifier of the list.</span>
+<span class="sd">            - kwargs: Additional options for the list.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;idBoard&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idBoard</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span></div>
 
 
@@ -145,10 +146,25 @@
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.archive_list">[docs]</a>
     <span class="k">def</span> <span class="nf">archive_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a List object with the given ID.</span>
+<span class="sd">        Archives a list with the given ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - list_id (str): The unique identifier of the list to archive.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">list_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/closed&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">List</span><span class="p">(</span><span class="n">list_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/closed/&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">})</span></div>
+
+
+<div class="viewcode-block" id="ListManager.get_cards_on_list">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.list.ListManager.get_cards_on_list">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_cards_on_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Retrieves all cards on a specific list.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - list_id (str): The unique identifier of the list.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;lists/</span><span class="si">{</span><span class="n">list_id</span><span class="si">}</span><span class="s2">/cards/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span> <span class="k">for</span> <span class="n">card</span> <span class="ow">in</span> <span class="n">cards</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

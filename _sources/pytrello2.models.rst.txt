@@ -28,6 +28,14 @@ pytrello2.models.list module
    :undoc-members:
    :show-inheritance:
 
+pytrello2.models.model module
+-----------------------------
+
+.. automodule:: pytrello2.models.model
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

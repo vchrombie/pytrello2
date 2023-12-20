@@ -109,8 +109,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pytrello2.models.board.Board">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.models.board.</span></span><span class="sig-name descname"><span class="pre">Board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/models/board.html#Board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.models.board.Board" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents a Trello board.</p>
+<dd><p>Bases: <a class="reference internal" href="#pytrello2.models.model.Model" title="pytrello2.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Represents a Trello Board.</p>
 </dd></dl>
 
 </section>
@@ -119,8 +119,8 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pytrello2.models.card.Card">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.models.card.</span></span><span class="sig-name descname"><span class="pre">Card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/models/card.html#Card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.models.card.Card" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Represents a Trello board.</p>
+<dd><p>Bases: <a class="reference internal" href="#pytrello2.models.model.Model" title="pytrello2.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
+<p>Represents a Trello Card.</p>
 </dd></dl>
 
 </section>
@@ -129,8 +129,23 @@
 <dl class="py class">
 <dt class="sig sig-object py" id="pytrello2.models.list.List">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.models.list.</span></span><span class="sig-name descname"><span class="pre">List</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/models/list.html#List"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.models.list.List" title="Link to this definition"></a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <a class="reference internal" href="#pytrello2.models.model.Model" title="pytrello2.models.model.Model"><code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></a></p>
 <p>Represents a Trello List.</p>
+</dd></dl>
+
+</section>
+<section id="module-pytrello2.models.model">
+<span id="pytrello2-models-model-module"></span><h2>pytrello2.models.model module<a class="headerlink" href="#module-pytrello2.models.model" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="pytrello2.models.model.Model">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.models.model.</span></span><span class="sig-name descname"><span class="pre">Model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/models/model.html#Model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.models.model.Model" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.models.model.Model.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/models/model.html#Model.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.models.model.Model.to_json" title="Link to this definition"></a></dt>
+<dd><p>Returns a JSON string representation of the Model object.</p>
+</dd></dl>
+
 </dd></dl>
 
 </section>

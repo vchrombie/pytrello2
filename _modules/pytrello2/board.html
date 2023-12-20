@@ -79,19 +79,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pytrello2.board</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.models.board</span> <span class="kn">import</span> <span class="n">Board</span>
+<span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Board</span><span class="p">,</span> <span class="n">List</span>
 
 
 <div class="viewcode-block" id="BoardManager">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager">[docs]</a>
 <span class="k">class</span> <span class="nc">BoardManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Manages operations related to Trello boards.</span>
+<span class="sd">    Manages operations related to Trello Boards.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the BoardManager with a client to handle requests to the Trello API.</span>
+<span class="sd">        Initializes the BoardManager with a client to handle requests to the</span>
+<span class="sd">        Trello API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -99,43 +100,29 @@
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_board">[docs]</a>
     <span class="k">def</span> <span class="nf">get_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Board object with the given ID.</span>
+<span class="sd">        Retrieves a board with the given ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - board_id (str): The unique identifier of the board.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">board_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Board</span><span class="p">(</span><span class="n">board_data</span><span class="p">)</span></div>
-
-
-<div class="viewcode-block" id="BoardManager.get_boards_by_filter">
-<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_boards_by_filter">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_boards_by_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a list of Board objects that match the given filter.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="nb">filter</span><span class="p">}</span> <span class="k">if</span> <span class="nb">filter</span> <span class="k">else</span> <span class="p">{}</span>
-        <span class="n">boards_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;members/me/boards&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">Board</span><span class="p">(</span><span class="n">board_data</span><span class="p">)</span> <span class="k">for</span> <span class="n">board_data</span> <span class="ow">in</span> <span class="n">boards_data</span><span class="p">]</span></div>
-
-
-<div class="viewcode-block" id="BoardManager.get_all_boards">
-<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_all_boards">[docs]</a>
-    <span class="k">def</span> <span class="nf">get_all_boards</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a list of Board objects for all boards.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boards_by_filter</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span></div>
+        <span class="n">board</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BoardManager.create_board">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.create_board">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">desc</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Creates a new Board object.</span>
+<span class="sd">        Creates a new board.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - name (str): The name of the board.</span>
+<span class="sd">            - kwargs: Additional options for the board.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">name</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc</span>
-        <span class="n">board_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;boards/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Board</span><span class="p">(</span><span class="n">board_data</span><span class="p">)</span></div>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">}</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">board</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;boards/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BoardManager.delete_board">
@@ -144,7 +131,43 @@
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Deletes a Board object with the given ID.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BoardManager.get_boards_by_filter">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_boards_by_filter">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_boards_by_filter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">filter</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of boards matching the given filter.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - filter (str): The filter to use to match boards.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="nb">filter</span><span class="p">}</span> <span class="k">if</span> <span class="nb">filter</span> <span class="k">else</span> <span class="p">{}</span>
+        <span class="n">boards</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;members/me/boards/&quot;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">Board</span><span class="p">(</span><span class="n">board</span><span class="p">)</span> <span class="k">for</span> <span class="n">board</span> <span class="ow">in</span> <span class="n">boards</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="BoardManager.get_all_boards">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_all_boards">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_all_boards</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of all boards.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_boards_by_filter</span><span class="p">(</span><span class="nb">filter</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="BoardManager.get_lists_on_board">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.board.BoardManager.get_lists_on_board">[docs]</a>
+    <span class="k">def</span> <span class="nf">get_lists_on_board</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">board_id</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a list of lists on the given board.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - board_id (str): The unique identifier of the board.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">lists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;boards/</span><span class="si">{</span><span class="n">board_id</span><span class="si">}</span><span class="s2">/lists/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">[</span><span class="n">List</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span> <span class="k">for</span> <span class="nb">list</span> <span class="ow">in</span> <span class="n">lists</span><span class="p">]</span></div>
 </div>
 
 </pre></div>

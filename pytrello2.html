@@ -136,6 +136,13 @@
 <li class="toctree-l3"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.list.List"><code class="docutils literal notranslate"><span class="pre">List</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models.model">pytrello2.models.model module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.model.Model"><code class="docutils literal notranslate"><span class="pre">Model</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="pytrello2.models.html#pytrello2.models.model.Model.to_json"><code class="docutils literal notranslate"><span class="pre">Model.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="pytrello2.models.html#module-pytrello2.models">Module contents</a></li>
 </ul>
 </li>
@@ -151,11 +158,18 @@
 <dt class="sig sig-object py" id="pytrello2.board.BoardManager">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.board.</span></span><span class="sig-name descname"><span class="pre">BoardManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Manages operations related to Trello boards.</p>
+<p>Manages operations related to Trello Boards.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.board.BoardManager.create_board">
-<span class="sig-name descname"><span class="pre">create_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.create_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.create_board" title="Link to this definition"></a></dt>
-<dd><p>Creates a new Board object.</p>
+<span class="sig-name descname"><span class="pre">create_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.create_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.create_board" title="Link to this definition"></a></dt>
+<dd><p>Creates a new board.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>name (str): The name of the board.</p></li>
+<li><p>kwargs: Additional options for the board.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
@@ -167,19 +181,43 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_all_boards">
 <span class="sig-name descname"><span class="pre">get_all_boards</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_all_boards"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_all_boards" title="Link to this definition"></a></dt>
-<dd><p>Returns a list of Board objects for all boards.</p>
+<dd><p>Returns a list of all boards.</p>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_board">
 <span class="sig-name descname"><span class="pre">get_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_board" title="Link to this definition"></a></dt>
-<dd><p>Returns a Board object with the given ID.</p>
+<dd><p>Retrieves a board with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>board_id (str): The unique identifier of the board.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_boards_by_filter">
 <span class="sig-name descname"><span class="pre">get_boards_by_filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filter</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_boards_by_filter"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_boards_by_filter" title="Link to this definition"></a></dt>
-<dd><p>Returns a list of Board objects that match the given filter.</p>
+<dd><p>Returns a list of boards matching the given filter.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>filter (str): The filter to use to match boards.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="pytrello2.board.BoardManager.get_lists_on_board">
+<span class="sig-name descname"><span class="pre">get_lists_on_board</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">board_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/board.html#BoardManager.get_lists_on_board"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.board.BoardManager.get_lists_on_board" title="Link to this definition"></a></dt>
+<dd><p>Returns a list of lists on the given board.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>board_id (str): The unique identifier of the board.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -191,29 +229,55 @@
 <dt class="sig sig-object py" id="pytrello2.card.CardManager">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">pytrello2.card.</span></span><span class="sig-name descname"><span class="pre">CardManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">client</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Manages operations related to Trello cards.</p>
+<p>Manages operations related to Trello Cards.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.card.CardManager.create_card">
-<span class="sig-name descname"><span class="pre">create_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.create_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.create_card" title="Link to this definition"></a></dt>
-<dd><p>Returns a Card object with the given ID.</p>
+<span class="sig-name descname"><span class="pre">create_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.create_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.create_card" title="Link to this definition"></a></dt>
+<dd><p>Creates a new card on a specified list.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>list_id (str): The unique identifier of the list to add the card to.</p></li>
+<li><p>kwargs: Additional options for the card.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.card.CardManager.delete_card">
 <span class="sig-name descname"><span class="pre">delete_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.delete_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.delete_card" title="Link to this definition"></a></dt>
-<dd><p>Returns a Card object with the given ID.</p>
+<dd><p>Deletes a card with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>card_id (str): The unique identifier of the card.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.card.CardManager.get_card">
 <span class="sig-name descname"><span class="pre">get_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.get_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.get_card" title="Link to this definition"></a></dt>
-<dd><p>Returns a Card object with the given ID.</p>
+<dd><p>Retrieves a card with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>card_id (str): The unique identifier of the card.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.card.CardManager.update_card">
-<span class="sig-name descname"><span class="pre">update_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idList</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.update_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.update_card" title="Link to this definition"></a></dt>
-<dd><p>Returns a Card object with the given ID.</p>
+<span class="sig-name descname"><span class="pre">update_card</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">card_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/card.html#CardManager.update_card"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.card.CardManager.update_card" title="Link to this definition"></a></dt>
+<dd><p>Updates a card with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>card_id (str): The unique identifier of the card.</p></li>
+<li><p>kwargs: Additional options for the card.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -278,31 +342,64 @@
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.list.ListManager.archive_list">
 <span class="sig-name descname"><span class="pre">archive_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.archive_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.archive_list" title="Link to this definition"></a></dt>
-<dd><p>Returns a List object with the given ID.</p>
+<dd><p>Archives a list with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>list_id (str): The unique identifier of the list to archive.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.list.ListManager.create_list">
-<span class="sig-name descname"><span class="pre">create_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">idBoard</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.create_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.create_list" title="Link to this definition"></a></dt>
-<dd><p>Returns a List object with the given ID.</p>
+<span class="sig-name descname"><span class="pre">create_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">board_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.create_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.create_list" title="Link to this definition"></a></dt>
+<dd><p>Creates a new list on a specified board.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>name (str): The name of the new list.</p></li>
+<li><p>board_id (str): The unique identifier of the board where the list
+will be created.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.list.ListManager.get_cards_on_list">
 <span class="sig-name descname"><span class="pre">get_cards_on_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.get_cards_on_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.get_cards_on_list" title="Link to this definition"></a></dt>
-<dd><p>Returns a List object with the given ID.</p>
+<dd><p>Retrieves all cards on a specific list.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>list_id (str): The unique identifier of the list.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.list.ListManager.get_list">
 <span class="sig-name descname"><span class="pre">get_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.get_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.get_list" title="Link to this definition"></a></dt>
-<dd><p>Returns a List object with the given ID.</p>
+<dd><p>Retrieves a specific list by its ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>list_id (str): The unique identifier of the list.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="pytrello2.list.ListManager.update_list">
-<span class="sig-name descname"><span class="pre">update_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idBoard</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.update_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.update_list" title="Link to this definition"></a></dt>
-<dd><p>Returns a List object with the given ID.</p>
+<span class="sig-name descname"><span class="pre">update_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_id</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/pytrello2/list.html#ListManager.update_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#pytrello2.list.ListManager.update_list" title="Link to this definition"></a></dt>
+<dd><p>Updates a list with the given ID.</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><ul class="simple">
+<li><p>list_id (str): The unique identifier of the list.</p></li>
+<li><p>kwargs: Additional options for the list.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>

@@ -79,19 +79,20 @@
            <div itemprop="articleBody">
              
   <h1>Source code for pytrello2.card</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.models.card</span> <span class="kn">import</span> <span class="n">Card</span>
+<span></span><span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Card</span>
 
 
 <div class="viewcode-block" id="CardManager">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager">[docs]</a>
 <span class="k">class</span> <span class="nc">CardManager</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Manages operations related to Trello cards.</span>
+<span class="sd">    Manages operations related to Trello Cards.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">client</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Initializes the CardManager with a client to handle requests to the Trello API.</span>
+<span class="sd">        Initializes the CardManager with a client to handle requests to the</span>
+<span class="sd">        Trello API.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="n">client</span>
 
@@ -99,46 +100,57 @@
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager.get_card">[docs]</a>
     <span class="k">def</span> <span class="nf">get_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Card object with the given ID.</span>
+<span class="sd">        Retrieves a card with the given ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - card_id (str): The unique identifier of the card.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">card_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card_data</span><span class="p">)</span></div>
+        <span class="n">card</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CardManager.create_card">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager.create_card">[docs]</a>
-    <span class="k">def</span> <span class="nf">create_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idList</span><span class="p">,</span> <span class="n">desc</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">create_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">list_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Card object with the given ID.</span>
+<span class="sd">        Creates a new card on a specified list.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - list_id (str): The unique identifier of the list to add the card to.</span>
+<span class="sd">            - kwargs: Additional options for the card.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;idList&quot;</span><span class="p">:</span> <span class="n">list_id</span><span class="p">}</span>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;cards/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CardManager.update_card">
+<a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager.update_card">[docs]</a>
+    <span class="k">def</span> <span class="nf">update_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Updates a card with the given ID.</span>
+
+<span class="sd">        Parameters:</span>
+<span class="sd">            - card_id (str): The unique identifier of the card.</span>
+<span class="sd">            - kwargs: Additional options for the card.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;idList&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idList</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc</span>
-        <span class="n">card_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">&quot;cards/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card_data</span><span class="p">)</span></div>
+        <span class="n">data</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">card</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CardManager.delete_card">
 <a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager.delete_card">[docs]</a>
     <span class="k">def</span> <span class="nf">delete_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card_id</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Card object with the given ID.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">card_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card_data</span><span class="p">)</span></div>
+<span class="sd">        Deletes a card with the given ID.</span>
 
-
-<div class="viewcode-block" id="CardManager.update_card">
-<a class="viewcode-back" href="../../pytrello2.html#pytrello2.card.CardManager.update_card">[docs]</a>
-    <span class="k">def</span> <span class="nf">update_card</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">card_id</span><span class="p">,</span> <span class="n">idList</span><span class="p">,</span> <span class="n">desc</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        Returns a Card object with the given ID.</span>
+<span class="sd">        Parameters:</span>
+<span class="sd">            - card_id (str): The unique identifier of the card.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;idList&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">idList</span>
-        <span class="n">data</span><span class="p">[</span><span class="s2">&quot;desc&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">desc</span>
-        <span class="n">card_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">Card</span><span class="p">(</span><span class="n">card_data</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;cards/</span><span class="si">{</span><span class="n">card_id</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span></div>
 </div>
 
 </pre></div>
