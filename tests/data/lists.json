@@ -1,0 +1,30 @@
+[
+  {
+    "id": "5abbe4b7ddc1b351ef961414",
+    "name": "Things to buy today",
+    "closed": true,
+    "pos": 2154,
+    "softLimit": "<string>",
+    "idBoard": "<string>",
+    "subscribed": true,
+    "limits": {
+      "attachments": {
+        "perBoard": {}
+      }
+    }
+  },
+  {
+    "id": "5abbe4b7ddc1b351ef961414",
+    "name": "Things to buy today",
+    "closed": true,
+    "pos": 2154,
+    "softLimit": "<string>",
+    "idBoard": "<string>",
+    "subscribed": true,
+    "limits": {
+      "attachments": {
+        "perBoard": {}
+      }
+    }
+  }
+]

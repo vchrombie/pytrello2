@@ -2,7 +2,7 @@ import pytest
 
 from unittest.mock import Mock
 
-from pytrello2.models import Board
+from pytrello2.models import Board, List
 from pytrello2.board import BoardManager
 
 from .utils import load_mock_data
@@ -11,6 +11,7 @@ from .utils import load_mock_data
 # Constants for mock data file paths
 BOARD_MOCK_DATA = "board.json"
 BOARDS_MOCK_DATA = "boards.json"
+LISTS_MOCK_DATA = "lists.json"
 
 
 # Fixture for the mock HTTP client
@@ -76,3 +77,20 @@ def test_get_all_boards(mock_http_client):
     mock_http_client.get.assert_called_once_with(
         "members/me/boards/", params={"filter": "all"}
     )
+
+
+# Test for get_lists_on_board method
+def test_get_lists_on_board(mock_http_client):
+    lists_data = load_mock_data(LISTS_MOCK_DATA)
+    mock_http_client.get.return_value = lists_data
+
+    board_manager = BoardManager(mock_http_client)
+    lists = board_manager.get_lists_on_board("test_board_id")
+
+    assert len(lists) == len(lists_data)
+
+    for list, mock_data in zip(lists, lists_data):
+        assert isinstance(list, List)
+        assert list.id == mock_data["id"]
+        assert list.name == mock_data["name"]
+    mock_http_client.get.assert_called_once_with("boards/test_board_id/lists/")
