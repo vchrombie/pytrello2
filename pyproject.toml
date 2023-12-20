@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pytrello2"
-version = "0.0.0"
+version = "0.1.0"
 description = "Python wrapper for the Trello API"
 authors = [
     "Venu Vardhan Reddy Tekula <vt2182@nyu.edu>",
