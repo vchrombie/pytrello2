@@ -29,7 +29,7 @@ class CardManager:
 
         Parameters:
             - list_id (str): The unique identifier of the list to add the card to.
-            - **kwargs: Additional options for the card.
+            - kwargs: Additional options for the card.
         """
         data = {"idList": list_id}
         data.update(kwargs)
@@ -42,7 +42,7 @@ class CardManager:
 
         Parameters:
             - card_id (str): The unique identifier of the card.
-            - **kwargs: Additional options for the card.
+            - kwargs: Additional options for the card.
         """
         data = {}
         data.update(kwargs)

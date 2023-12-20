@@ -29,7 +29,7 @@ class BoardManager:
 
         Parameters:
             - name (str): The name of the board.
-            - **kwargs: Additional options for the board.
+            - kwargs: Additional options for the board.
         """
         data = {"name": name}
         data.update(kwargs)

@@ -43,7 +43,7 @@ class ListManager:
 
         Parameters:
             - list_id (str): The unique identifier of the list.
-            - **kwargs: Additional options for the list.
+            - kwargs: Additional options for the list.
         """
         data = {}
         data.update(kwargs)

@@ -3,7 +3,7 @@ from .model import Model
 
 class Board(Model):
     """
-    Represents a Trello board.
+    Represents a Trello Board.
     """
 
     def __init__(self, data):
